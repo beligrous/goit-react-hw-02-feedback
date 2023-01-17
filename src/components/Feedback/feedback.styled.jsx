@@ -20,7 +20,3 @@ export const Container = styled.div`
   margin: 0 auto;
   background-color: azure;
 `;
-
-export const Item = styled.li`
-  list-style: none;
-`;
