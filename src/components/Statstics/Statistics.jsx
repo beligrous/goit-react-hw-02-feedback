@@ -1,18 +1,18 @@
 import React from 'react';
-import { Item } from './statistics.styled';
+import { Item, Container, List } from './statistics.styled';
 
 function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
-    <div>
+    <Container>
       <p>Statistics</p>
-      <ul>
+      <List>
         <Item>Good: {good}</Item>
         <Item>Neutral: {neutral}</Item>
         <Item>Bad: {bad}</Item>
         <Item>Total: {total}</Item>
         <Item>Positive feedback: {positivePercentage}%</Item>
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 }
 
