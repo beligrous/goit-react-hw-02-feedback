@@ -1,13 +1,17 @@
-import { Container } from './feedbackOptions.styled';
+import PropTypes from 'prop-types';
 import Buttons from './Buttons';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <Container>
-      <p>Please leave feedback</p>
+    <>
       <Buttons options={options} onLeaveFeedback={onLeaveFeedback} />
-    </Container>
+    </>
   );
 }
 
 export default FeedbackOptions;
+
+Buttons.propTypes = {
+  options: PropTypes.objectOf(PropTypes.number.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
+};

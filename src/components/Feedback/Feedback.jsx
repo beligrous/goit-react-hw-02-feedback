@@ -1,7 +1,9 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container } from './feedback.styled';
 import Statistics from 'components/Statstics/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+import Section from 'components/Section/Section';
 
 export default class Feedback extends Component {
   state = {
@@ -38,18 +40,33 @@ export default class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <Container>
-        <FeedbackOptions
-          options={this.state}
-          onLeaveFeedback={this.handleClick}
-        />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.handleClick}
+          />
+        </Section>
+        <Section title={'Statistics'}>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </Container>
     );
   }
 }
+
+Feedback.propTypes = {
+  title: PropTypes.string.isRequired,
+  options: PropTypes.objectOf(PropTypes.number.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};

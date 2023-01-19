@@ -1,9 +1,9 @@
-import { Item, Container, List } from './statistics.styled';
+import PropTypes from 'prop-types';
+import { Item, List } from './statistics.styled';
 
 function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
-    <Container>
-      <p>Statistics</p>
+    <>
       <List>
         <Item>Good: {good}</Item>
         <Item>Neutral: {neutral}</Item>
@@ -11,8 +11,16 @@ function Statistics({ good, neutral, bad, total, positivePercentage }) {
         <Item>Total: {total}</Item>
         <Item>Positive feedback: {positivePercentage}%</Item>
       </List>
-    </Container>
+    </>
   );
 }
 
 export default Statistics;
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};

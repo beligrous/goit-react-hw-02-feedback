@@ -17,5 +17,6 @@ export const Container = styled.ul`
   display: flex;
   gap: 30px;
   padding: 0;
+  margin: 0 auto;
   list-style: none;
 `;

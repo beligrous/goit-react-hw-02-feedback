@@ -1,5 +1,5 @@
 import { Button, Container } from './buttons.styled';
-
+import PropTypes from 'prop-types';
 function Buttons({ options, onLeaveFeedback }) {
   const items = Object.keys(options);
 
@@ -15,3 +15,8 @@ function Buttons({ options, onLeaveFeedback }) {
 }
 
 export default Buttons;
+
+Buttons.propTypes = {
+  options: PropTypes.objectOf(PropTypes.number.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
