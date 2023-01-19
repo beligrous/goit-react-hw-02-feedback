@@ -7,4 +7,5 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   font-size: 25px;
+  font-weight: 600;
 `;

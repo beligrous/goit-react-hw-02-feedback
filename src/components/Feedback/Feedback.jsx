@@ -67,7 +67,7 @@ export default class Feedback extends Component {
 
 Feedback.propTypes = {
   title: PropTypes.string,
-  options: PropTypes.objectOf(PropTypes.number.isRequired),
+  options: PropTypes.objectOf(PropTypes.number),
   onLeaveFeedback: PropTypes.func,
   good: PropTypes.number,
   neutral: PropTypes.number,
