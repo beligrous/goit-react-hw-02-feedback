@@ -1,4 +1,3 @@
-import React from 'react';
 import { Item, Container, List } from './statistics.styled';
 
 function Statistics({ good, neutral, bad, total, positivePercentage }) {

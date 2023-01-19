@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import { Button, Container } from './feedback.styled';
+import { Container } from './feedback.styled';
 import Statistics from 'components/Statstics/Statistics';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 
 export default class Feedback extends Component {
   state = {
@@ -9,16 +10,10 @@ export default class Feedback extends Component {
     bad: 0,
   };
 
-  handleGoodClick = () => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
-  };
-
-  handleNeutralClick = () => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-
-  handleBadClick = () => {
-    this.setState(prevState => ({ bad: prevState.bad + 1 }));
+  handleClick = name => {
+    this.setState(prevState => {
+      return { [name]: prevState[name] + 1 };
+    });
   };
 
   countPositiveFeedbackPercentage() {
@@ -43,17 +38,17 @@ export default class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <Container>
-        <p>Please leave feedback</p>
-        <Button onClick={this.handleGoodClick}>Good</Button>
-        <Button onClick={this.handleNeutralClick}>Neutral</Button>
-        <Button onClick={this.handleBadClick}>Bad</Button>
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.handleClick}
+        />
         <Statistics
           good={good}
           neutral={neutral}
           bad={bad}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
-        ></Statistics>
+        />
       </Container>
     );
   }
