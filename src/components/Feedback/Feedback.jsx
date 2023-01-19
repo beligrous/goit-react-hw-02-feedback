@@ -4,6 +4,7 @@ import { Container } from './feedback.styled';
 import Statistics from 'components/Statstics/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Section from 'components/Section/Section';
+import Notification from 'components/Notification/Notification';
 
 export default class Feedback extends Component {
   state = {
@@ -47,13 +48,17 @@ export default class Feedback extends Component {
           />
         </Section>
         <Section title={'Statistics'}>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {good !== 0 || neutral !== 0 || bad !== 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message={'There is no feedback'} />
+          )}
         </Section>
       </Container>
     );
@@ -61,12 +66,13 @@ export default class Feedback extends Component {
 }
 
 Feedback.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   options: PropTypes.objectOf(PropTypes.number.isRequired),
-  onLeaveFeedback: PropTypes.func.isRequired,
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.number.isRequired,
+  onLeaveFeedback: PropTypes.func,
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
+  message: PropTypes.string,
 };
