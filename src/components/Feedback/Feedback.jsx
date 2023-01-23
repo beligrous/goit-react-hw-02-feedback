@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Container } from './feedback.styled';
 import Statistics from 'components/Statstics/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
@@ -43,7 +42,7 @@ export default class Feedback extends Component {
       <Container>
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
-            options={this.state}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleClick}
           />
         </Section>
@@ -64,15 +63,3 @@ export default class Feedback extends Component {
     );
   }
 }
-
-Feedback.propTypes = {
-  title: PropTypes.string,
-  options: PropTypes.objectOf(PropTypes.number),
-  onLeaveFeedback: PropTypes.func,
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-  total: PropTypes.number,
-  positivePercentage: PropTypes.number,
-  message: PropTypes.string,
-};
